@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title>Eat Now Reminder</title>
+  </head>
+
+  <body
+    style="
+      background-color: azure;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 105%;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    ">
+    <table
+      width="100%"
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      style="
+        max-width: 600px;
+        margin: 1rem auto;
+        background-color: #ffffff;
+        border-radius: 2%;
+      ">
+      <tr>
+        <td style="padding: 1.5rem">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <!-- Header -->
+            <tr>
+              <td
+                style="
+                  text-align: right;
+                  width: 50%;
+                  font-size: 0.9em;
+                  font-weight: 700;
+                "></td>
+            </tr>
+          </table>
+
+          <!-- Main Content -->
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td>
+                <h2 style="text-align: center">It's time to eat!</h2>
+                <p style="margin-top: 1rem">
+                  Dear
+                  <span style="font-weight: 600">{{userName}}</span>,
+                </p>
+                <p>
+                  This is your reminder to leave everything you are doing right
+                  now to eat.
+                </p>
+                <p>Top meal options from our dedicated menu:</p>
+                <p>{{menu}}</p>
+                <p style="margin-top: 1rem">
+                  We know that you are very busy now and trying to meet that
+                  deadline but food is as important.
+                </p>
+                <p style="margin-top: 0.5rem">
+                  Thank you for choosing Eat Now and please make sure you
+                  actually eat 😉.
+                </p>
+              </td>
+            </tr>
+            <td>
+              <p>Cheers,<br />From the Eat Now Team.</p>
+            </td>
+          </table>
+
+          <!-- Footer -->
+          <tr>
+            <td
+              colspan="2"
+              style="
+                background-color: #00c1d61c;
+                padding: 1rem;
+                border-radius: 8px;
+                text-align: center;
+              ">
+              <a
+                href="#"
+                target="_blank"
+                style="font-size: 0.8em; text-decoration: none; color: #1f70da"
+                >www.eatnow.com</a
+              >
+              <div style="margin-top: 1rem">
+                <a href="#" target="_blank" style="text-decoration: none">
+                  <img
+                    src="https://d29mnaspwf7oj4.cloudfront.net/assets/images/facebook-logo.png"
+                    alt="Facebook"
+                    style="margin: 0.5rem; height: 32px" />
+                </a>
+                <a href="#" target="_blank" style="text-decoration: none">
+                  <img
+                    src="https://d29mnaspwf7oj4.cloudfront.net/assets/images/x-logo.png"
+                    alt="X (formerly Twitter)"
+                    style="margin: 0.5rem; height: 32px" />
+                </a>
+                <a href="#" target="_blank" style="text-decoration: none">
+                  <img
+                    src="https://d29mnaspwf7oj4.cloudfront.net/assets/images/instagram-logo.png"
+                    alt="Instagram"
+                    style="margin: 0.5rem; height: 32px" />
+                </a>
+                <a href="#" target="_blank" style="text-decoration: none">
+                  <img
+                    src="https://d29mnaspwf7oj4.cloudfront.net/assets/images/linkedin-logo.png"
+                    alt="LinkedIn"
+                    style="margin: 0.5rem; height: 32px" />
+                </a>
+              </div>
+            </td>
+          </tr>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
