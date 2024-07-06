@@ -17,6 +17,12 @@ export const createJob = async (req: Request, res: Response) => {
         .status(400)
         .json({ success: false, message: "User not found" });
     }
+
+    if (!scheduleFrequency || !category || !title || !type) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Missing required fields" });
+    }
     const { userName, email } = user;
     const foodMenu = await getMenuByCategory(category);
     const menu = getFiveRandomFoodMenus(foodMenu[0].options);
@@ -33,16 +39,21 @@ export const createJob = async (req: Request, res: Response) => {
 
     const emailAgenda = agendaInstance.create("scheduleEmail", options);
     if (type === "reoccuring") {
-      emailAgenda.repeatEvery(scheduleFrequency, { skipImmediate: true });
+      emailAgenda.repeatEvery(scheduleFrequency, {
+        skipImmediate: true,
+        timezone: "Africa/Lagos",
+      });
       // agendaInstance.every(scheduleFrequency, "scheduleEmail", options);
     } else {
       emailAgenda.schedule(scheduleFrequency);
     }
-    emailAgenda.save();
+    const savedJob = await emailAgenda.save();
+    const jobData = savedJob.toJson();
 
     return res.status(200).json({
       success: true,
       message: "Job created successfully",
+      data: jobData,
     });
   } catch (error: any) {
     res.status(500).json({
@@ -54,7 +65,7 @@ export const createJob = async (req: Request, res: Response) => {
 
 export const updateJob = async (req: Request, res: Response) => {
   try {
-    const { userId } = req;
+    // const { userId } = req;
     const { id } = req.params as unknown as ObjectId;
     const { scheduleFrequency } = req.body;
 
@@ -69,7 +80,6 @@ export const updateJob = async (req: Request, res: Response) => {
       return res.status(400).json({
         success: false,
         message: "Job not found",
-        data: updateJob,
       });
     }
     return res.status(200).json({
@@ -87,10 +97,10 @@ export const updateJob = async (req: Request, res: Response) => {
 
 export const deleteJob = async (req: Request, res: Response) => {
   try {
-    const { userId } = req;
-    const { id } = req.params as unknown as ObjectId;
+    // const { userId } = req;
+    const { id } = req.params;
 
-    const deletedJob = await agendaInstance.cancel({ _id: id });
+    const deletedJob = await JobsModel.findByIdAndDelete(id);
 
     if (!deletedJob) {
       return res.status(400).json({ success: false, message: "Job not found" });
