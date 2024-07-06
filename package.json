@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "tsx src/server.ts",
     "dev": "nodemon --watch 'src/**/*.ts' --exec tsx src/server.ts"
   },
   "keywords": [],
